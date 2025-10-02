@@ -6,7 +6,8 @@
  This script drops existing bronze tables if they exist and recreates them.
  It is safe to run repeatedly but will remove any data currently in those
  tables in the bronze schema.
- */
+*/
+
 -- CRM Tables
 DROP TABLE IF EXISTS bronze.crm_cust_info;
 CREATE TABLE bronze.crm_cust_info (
@@ -40,6 +41,7 @@ CREATE TABLE bronze.crm_sales_details (
     sls_quantity INT,
     sls_price INT
 );
+
 -- ERP Tables
 DROP TABLE IF EXISTS bronze.erp_cust_az12;
 CREATE TABLE bronze.erp_cust_az12 (
@@ -48,7 +50,10 @@ CREATE TABLE bronze.erp_cust_az12 (
     gen VARCHAR(10)
 );
 DROP TABLE IF EXISTS bronze.erp_loc_a101;
-CREATE TABLE bronze.erp_loc_a101 (cid VARCHAR(20), cntry VARCHAR(20));
+CREATE TABLE bronze.erp_loc_a101 (
+    cid VARCHAR(20),
+    cntry VARCHAR(20)
+);
 DROP TABLE IF EXISTS bronze.px_cat_g1v2;
 CREATE TABLE bronze.px_cat_g1v2 (
     id VARCHAR(5),

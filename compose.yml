@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: veridian-db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: Warehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d
+      - ./datasets:/datasets
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
