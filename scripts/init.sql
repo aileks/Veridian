@@ -9,25 +9,15 @@ it creates a new database named 'Warehouse' and three schemas:
 bronze, silver, and gold.
 */
 
-USE master;
+SELECT pg_terminate_backend(pid)
+FROM pg_stat_activity
+WHERE datname = 'Warehouse';
 
-IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'Warehouse')
-BEGIN
-    ALTER DATABASE Warehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-    DROP DATABASE Warehouse;
-END;
-GO
-
+DROP DATABASE IF EXISTS Warehouse;
 CREATE DATABASE Warehouse;
-GO
-
 USE Warehouse;
-GO
 
-CREATE SCHEMA bronze;
-GO
-CREATE SCHEMA silver;
-GO
-CREATE SCHEMA gold;
-GO
+CREATE SCHEMA IF NOT EXISTS bronze;
+CREATE SCHEMA IF NOT EXISTS silver;
+CREATE SCHEMA IF NOT EXISTS gold;
 
