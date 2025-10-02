@@ -1,4 +1,4 @@
-# Veridian: A Containerized SQL Data Warehouse
+# Veridian: A Containerized PostgreSQL Data Warehouse
 
 Veridian is a containerized SQL data-warehouse project that demonstrates a simple ETL pipeline, database initialization scripts, and automated data-quality tests. The project runs locally inside Docker using the provided Compose configuration and a Postgres database.
 
